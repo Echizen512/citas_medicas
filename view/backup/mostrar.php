@@ -311,6 +311,24 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 						</li>
 
 						<li class="nav-item">
+                        <a data-toggle="collapse" href="#auditoria">
+                            <i class="fas fa-clipboard-list"></i>
+                            <p>Auditoría</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="auditoria">
+                            <ul class="nav nav-collapse">
+                                <li>
+									<a href="../audit/mostrar.php">
+                                        <span class="sub-item">Mostrar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#backup">
 								<i class="fas fa-download"></i>
 								<p>Respaldo</p>

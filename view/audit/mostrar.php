@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$consulta = "SELECT id_pago, codcit, codpaci, coddoc, monto, monto_bs, metodo_pago, referencia, fecha FROM pagos";
+$consulta = "SELECT id_auditoria, tabla, accion, cod_registro, datos, fecha FROM auditoria";
 $result = $conn->query($consulta);
 
 ?>
@@ -281,7 +281,6 @@ $result = $conn->query($consulta);
                     </li>
 
 
-
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#backup">
                             <i class="fas fa-download"></i>
@@ -307,11 +306,12 @@ $result = $conn->query($consulta);
         </div>
     </div>
 
+
     <div class="main-panel">
         <div class="content">
             <div class="page-inner">
                 <div class="page-header">
-                    <h4 class="page-title">Pagos</h4>
+                    <h4 class="page-title">Auditoría</h4>
                     <ul class="breadcrumbs">
                         <li class="nav-home">
                             <a href="../../view/admin/admin.php">
@@ -325,79 +325,49 @@ $result = $conn->query($consulta);
                             <a href="#">Mostrar</a>
                         </li>
                     </ul>
-
-
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
-                                    <h4 class="card-title">Mostrar Pagos</h4>
+                                    <h4 class="card-title">Mostrar Auditoría</h4>
                                 </div>
-                                <div class="card-tools">
-                                    <a href="../../view/pagos/reporte.php"
-                                        class="btn btn-info btn-border btn-round btn-sm mr-2">
-                                        <span class="btn-label">
-                                            <i class="fa fa-pencil"></i>
-                                        </span>
-                                        Exportar PDF
-                                    </a>
-                                </div>
+
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="add-row" class="display table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Código Cita</th>
-                                                <th>Código Paciente</th>
-                                                <th>($)</th>
-                                                <th>(Bs)</th>
-                                                <th>Método de Pago</th>
-                                                <th>Referencia</th>
+                                                <th>ID Auditoría</th>
+                                                <th>Tabla</th>
+                                                <th>Acción</th>
+                                                <th>ID Registro</th>
+                                                <th>Datos</th>
                                                 <th>Fecha</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    // Asignar el nombre del método de pago según su código
-                                    $metodo_pago = "";
-                                    switch ($row['metodo_pago']) {
-                                        case 1:
-                                            $metodo_pago = "Pago Movil";
-                                            break;
-                                        case 2:
-                                            $metodo_pago = "PayPal";
-                                            break;
-                                        case 3:
-                                            $metodo_pago = "Binance";
-                                            break;
-                                        case 4:
-                                            $metodo_pago = "Efectivo";
-                                            break;
-                                        default:
-                                            $metodo_pago = "Desconocido";
-                                    }
-                                    ?>
+                                        if ($result->num_rows > 0) {
+                                            while($row = $result->fetch_assoc()) {
+                                                ?>
                                             <tr>
-                                                <td><?php echo $row['codcit']; ?></td>
-                                                <td><?php echo $row['codpaci']; ?></td>
-                                                <td><?php echo $row['monto']; ?></td>
-                                                <td><?php echo $row['monto_bs']; ?></td>
-                                                <td><?php echo $metodo_pago; ?></td>
-                                                <td><?php echo $row['referencia']; ?></td>
+                                                <td><?php echo $row['id_auditoria']; ?></td>
+                                                <td><?php echo $row['tabla']; ?></td>
+                                                <td><?php echo $row['accion']; ?></td>
+                                                <td><?php echo $row['cod_registro']; ?></td>
+                                                <td><?php echo $row['datos']; ?></td>
                                                 <td><?php echo $row['fecha']; ?></td>
                                             </tr>
                                             <?php
-                                }
-                            } else {
-                                echo "<tr><td colspan='7'>No se encontraron resultados</td></tr>";
-                            }
-                            $conn->close();
-                            ?>
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='6'>No se encontraron resultados</td></tr>";
+                                        }
+                                        $conn->close();
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -405,47 +375,49 @@ $result = $conn->query($consulta);
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-                <script src="../../assets/js/functions3.js"></script>
-                <script src="../../assets/js/core/jquery.3.2.1.min.js"></script>
-                <script src="../../assets/js/core/popper.min.js"></script>
-                <script src="../../assets/js/core/bootstrap.min.js"></script>
-                <script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-                <script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-                <script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-                <script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
-                <script src="../../assets/js/atlantis.min.js"></script>
-                <script src="../../assets/js/setting-demo2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../../assets/js/functions3.js"></script>
+    <script src="../../assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="../../assets/js/core/popper.min.js"></script>
+    <script src="../../assets/js/core/bootstrap.min.js"></script>
+    <script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="../../assets/js/atlantis.min.js"></script>
+    <script src="../../assets/js/setting-demo2.js"></script>
 
-
-                <script>
-                $(document).ready(function() {
-                    $('#add-row').DataTable({
-                        "language": {
-                            "sProcessing": "Procesando...",
-                            "sLengthMenu": "Mostrar _MENU_ registros",
-                            "sZeroRecords": "No se encontraron resultados",
-                            "sEmptyTable": "Ningún dato disponible en esta tabla",
-                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                            "sInfoPostFix": "",
-                            "sSearch": "Buscar:",
-                            "sUrl": "",
-                            "sInfoThousands": ",",
-                            "sLoadingRecords": "Cargando...",
-                            "oPaginate": {
-                                "sFirst": "Primero",
-                                "sLast": "Último",
-                                "sNext": "Siguiente",
-                                "sPrevious": "Anterior"
-                            },
-                            "oAria": {
-                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                            }
-                        }
-                    });
-                });
-                </script>
+    <script>
+    $(document).ready(function() {
+        $('#add-row').DataTable({
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
+    });
+    </script>

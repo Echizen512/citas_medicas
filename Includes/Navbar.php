@@ -24,7 +24,7 @@
 							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
 								
 								<li>
-									<a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
+									<a class="see-all" href="javascript:void(0);"><i class="fa fa-angle-right"></i> </a>
 								</li>
 							</ul>
 						</li>

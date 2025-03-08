@@ -222,7 +222,7 @@
 
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#pagos">
-								<i class="fas fa-user"></i>
+								<i class="fas fa-money-bill-wave"></i>
 								<p>Pagos</p>
 								<span class="caret"></span>
 							</a>
