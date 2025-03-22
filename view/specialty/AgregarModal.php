@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     </div>
-                    <button type="submit" name="agregar" class="btn btn-primary pull-right">Agregar</button>
+                    <button type="submit" name="agregar" class="btn btn-primary pull-right" style="border-radius: 50%">Agregar</button>
                     <div class="clearfix"></div>
             </form>
             </div>

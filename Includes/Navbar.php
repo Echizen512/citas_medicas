@@ -41,7 +41,6 @@
 											<div class="avatar-lg"><img src="../assets/img/mujer.png" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4><?php echo ucfirst($_SESSION['nombre']); ?></h4>
-												<p class="text-muted">Administrador</p>
 											</div>
 										</div>
 									</li>

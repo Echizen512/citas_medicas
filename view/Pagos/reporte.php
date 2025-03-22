@@ -1,5 +1,5 @@
 <?php
-ob_start(); // Iniciar buffer de salida para evitar que se envíe contenido antes del PDF
+ob_start(); 
 
 class dbConexion {
     private $dbhost = "localhost";
@@ -89,19 +89,18 @@ class PDF extends FPDF {
     }
 }
 
-$db = new dbConexion();
-$connString = $db->getConexion();
-$display_heading = array('CITA', 'PACIENTE', 'MONTO', 'MONTO BS', 'METODO PAGO', 'REFERENCIA', 'FECHA');
+        $db = new dbConexion();
+        $connString = $db->getConexion();
+        $display_heading = array('CITA', 'PACIENTE', 'MONTO', 'MONTO BS', 'METODO PAGO', 'REFERENCIA', 'FECHA');
+        $result = mysqli_query($connString, "SELECT `codcit`, `codpaci`, `monto`, `monto_bs`, `metodo_pago`, `referencia`, `fecha` FROM `pagos`") or die("database error:" . mysqli_error($connString));
 
-$result = mysqli_query($connString, "SELECT `codcit`, `codpaci`, `monto`, `monto_bs`, `metodo_pago`, `referencia`, `fecha` FROM `pagos`") or die("database error:" . mysqli_error($connString));
+        $pdf = new PDF('L', 'mm', 'A4');
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->FancyTable($display_heading, $result);
 
-$pdf = new PDF('L', 'mm', 'A4');
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Arial', '', 12);
+        ob_end_clean();
+        $pdf->Output('D', 'pagos.pdf');
 
-$pdf->FancyTable($display_heading, $result);
-
-ob_end_clean(); // Limpiar buffer antes de enviar el PDF
-$pdf->Output('D', 'pagos.pdf');
 ?>

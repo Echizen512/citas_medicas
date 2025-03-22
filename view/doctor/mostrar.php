@@ -43,8 +43,8 @@ session_start();
 									<a href="#addRowModal" class="btn btn-primary btn-round ml-auto"
 										data-toggle="modal">Nuevo</a>
 									<?php include('AgregarModal.php'); ?>
-								</div>
-								<div class="card-tools">
+
+								<div class="card-tools mt-4 mb-3 ml-4">
 									<a href="../view/doctor/reporte.php"
 										class="btn btn-info btn-border btn-round btn-sm mr-2">
 										<span class="btn-label">
@@ -53,16 +53,17 @@ session_start();
 										Exportar PDF
 									</a>
 								</div>
+
 								<div class="card-body">
 									<div class="table-responsive">
 										<table id="add-row" class="display table table-striped table-hover">
 											<thead>
 												<tr>
-													<th>C.I</th>
-													<th>Doctor</th>
-													<th>Especialidad</th>
-													<th>Municipio</th>
-													<th>Estado</th>
+													<th class="text-center">C.I</th>
+													<th class="text-center">Doctor</th>
+													<th class="text-center">Especialidad</th>
+													<th class="text-center">Municipio</th>
+													<th class="text-center">Estado</th>
 													<th style="width: 10%">Acción</th>
 												</tr>
 											</thead>
@@ -71,12 +72,12 @@ session_start();
 												foreach ($dato as $key => $value) {
 													foreach ($value as $va) { ?>
 														<tr>
-															<td><?php echo $va['dnidoc']; ?></td>
-															<td><?php echo $va['nomdoc']; ?>&nbsp;<?php echo $va['apedoc']; ?>
+															<td class="text-center"><?php echo $va['dnidoc']; ?></td>
+															<td class="text-center"><?php echo $va['nomdoc']; ?>&nbsp;<?php echo $va['apedoc']; ?>
 															</td>
-															<td><?php echo $va['nombrees']; ?></td>
-															<td><?php echo $va['naciona']; ?></td>
-															<td>
+															<td class="text-center"><?php echo $va['nombrees']; ?></td>
+															<td class="text-center"><?php echo $va['naciona']; ?></td>
+															<td class="text-center">
 																<?php if ($va['estado'] == 1) { ?>
 																	<form method="get"
 																		action="javascript:activo('<?php echo $va['coddoc']; ?>')">
@@ -91,7 +92,7 @@ session_start();
 																	</form>
 																<?php } ?>
 															</td>
-															<td>
+															<td class="text-center">
 																<div class="form-button-action">
 																	<a href="#editRowModal_<?php echo $va["coddoc"]; ?>"
 																		title="Editar" data-backdrop="false"
@@ -234,7 +235,7 @@ session_start();
             }
         });
 
-        var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+        var action = '<td class="text-center"> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
         $('#addRowButton').click(function () {
             $('#add-row').dataTable().fnAddData([
                 $("#addName").val(),

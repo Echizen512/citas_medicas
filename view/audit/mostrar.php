@@ -121,8 +121,6 @@ $result = $conn->query($consulta);
                                                 class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4><?php echo ucfirst($_SESSION['nombre']); ?></h4>
-                                            <p class="text-muted">Administrador</p><a href="profile.html"
-                                                class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                                         </div>
                                     </div>
                                 </li>
@@ -149,7 +147,6 @@ $result = $conn->query($consulta);
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                             <span>
                                 <?php echo ucfirst($_SESSION['nombre']); ?>
-                                <span class="user-level">Administrador</span>
                             </span>
                         </a>
                         <div class="clearfix"></div>
@@ -340,12 +337,12 @@ $result = $conn->query($consulta);
                                     <table id="add-row" class="display table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>ID Auditoría</th>
-                                                <th>Tabla</th>
-                                                <th>Acción</th>
-                                                <th>ID Registro</th>
-                                                <th>Datos</th>
-                                                <th>Fecha</th>
+                                                <th class="text-center">ID</th>
+                                                <th class="text-center">Tabla</th>
+                                                <th class="text-center">Acción</th>
+                                                <th class="text-center">Registro</th>
+                                                <th class="text-center">Datos</th>
+                                                <th class="text-center">Fecha</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -354,12 +351,14 @@ $result = $conn->query($consulta);
                                             while($row = $result->fetch_assoc()) {
                                                 ?>
                                             <tr>
-                                                <td><?php echo $row['id_auditoria']; ?></td>
-                                                <td><?php echo $row['tabla']; ?></td>
-                                                <td><?php echo $row['accion']; ?></td>
-                                                <td><?php echo $row['cod_registro']; ?></td>
-                                                <td><?php echo $row['datos']; ?></td>
-                                                <td><?php echo $row['fecha']; ?></td>
+                                                <td class="text-center"><?php echo $row['id_auditoria']; ?></td>
+                                                <td class="text-center"><?php echo $row['tabla']; ?></td>
+                                                <td class="text-center"><?php echo $row['accion']; ?></td>
+                                                <td class="text-center"><?php echo $row['cod_registro']; ?></td>
+                                                <td class="text-center"><?php echo $row['datos']; ?></td>
+                                                <td class="text-center">
+                                                    <?php echo date('d, m, Y. H:i', strtotime($row['fecha'])); ?>
+                                                </td>
                                             </tr>
                                             <?php
                                             }

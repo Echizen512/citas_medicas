@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {
                         location.reload();
                     }
                 });
-              </script>';
+            </script>';
     } catch (PDOException $e) {
         echo '<script>
                 Swal.fire({
@@ -46,11 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {
                     icon: "error",
                     confirmButtonText: "OK"
                 });
-              </script>';
+            </script>';
     }
     $database->close();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,12 +77,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {
 <body>
 
 <?php
-	include '../Includes/Header.php';
+	
+    include '../Includes/Header.php';
     include '../Includes/Navbar.php';
     include '../Includes/Sidebar.php';
+
 ?>
-
-
 
 <div class="main-panel">
     <div class="content">
@@ -108,9 +109,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Mostrar</h4>
-                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addPatientModal">Nuevo</button>
+                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addPatientModal">¡Nuevo Paciente!</button>
                             </div>
-                            <div class="card-tools">
+                            <div class="card-tools text-left mt-4 mb-4">
                                 <a href="../view/customers/reporte.php" class="btn btn-info btn-border btn-round btn-sm mr-2">
                                     <span class="btn-label">
                                         <i class="fa fa-pencil"></i>
@@ -125,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {
                                             <tr>
                                                 <th>DNI</th>
                                                 <th>Paciente</th>
-                                                <th>Seguro</th>
+                                                <th>Seguro Médico</th>
                                                 <th>Teléfono</th>
                                                 <th>Estado</th>
                                                 <th>Fecha</th>
@@ -223,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {
 		</div>
 		<div class="col-md-6">
 			<div class="form-group form-group-default">
-                <label>Seguro</label>
+                <label>Seguro Médico</label>
 				<select class="form-control" name="seguro" required>
 					<option value="Si">Si</option>
 					<option value="No">No</option>
@@ -283,8 +284,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {
         </div>
 		</div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" name="add_patient">Agregar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary" style="border-radius: 50%" name="add_patient">Agregar</button>
+                <button type="button" class="btn btn-danger" style="border-radius: 50%" data-dismiss="modal">Cancelar</button>
             </div>
         </form>
     </div>

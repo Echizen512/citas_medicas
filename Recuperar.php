@@ -3,7 +3,7 @@ require 'assets/db/config.php';
 if (isset($_POST['recuperar'])) {
     $errMsg = '';
 
-    // Obtener datos del FORMULARIO
+
     $usuario = $_POST['usuario'];
     $nueva_clave = $_POST['nueva_clave'];
 

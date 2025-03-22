@@ -1,4 +1,80 @@
-<?php
+<div class="wrapper">
+        <div class="main-header">
+            <div class="logo-header" data-background-color="blue">
+                <a href="admin.php" class="logo" style="color: white"></a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+
+                <div class="container-fluid">
+                    <div class="collapse" id="search-nav">
+                        <form class="navbar-left navbar-form nav-search mr-md-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-search pr-1">
+                                        <i class="fa fa-search search-icon"></i>
+                                    </button>
+                                </div>
+                                <input type="text" placeholder="Buscar ..." class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                        <li class="nav-item toggle-nav-search hidden-caret">
+                            <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button"
+                                aria-expanded="false" aria-controls="search-nav">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown hidden-caret">
+                            <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown hidden-caret">
+                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
+                                aria-expanded="false">
+                                <div class="avatar-sm">
+                                    <img src="../../assets/img/mujer.png" alt="..." class="avatar-img rounded-circle">
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                <div class="dropdown-user-scroll scrollbar-outer">
+                                    <li>
+                                        <div class="user-box">
+
+                                            <div class="avatar-lg"><img src="../../assets/img/mujer.png"
+                                                    alt="image profile" class="avatar-img rounded"></div>
+                                            <div class="u-text">
+                                                <h4><?php echo ucfirst($_SESSION['nombre']); ?></h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="../../cerrarSesion.php">Cerrar Sesión</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <?php
 session_start();
 
 $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
@@ -9,7 +85,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="../assets/img/mujer.png" alt="..." class="avatar-img rounded-circle">
+                    <img src="../../assets/img/mujer.png" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -44,7 +120,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../folder/appointment.php">
+                                    <a href="../../folder/appointment.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -60,7 +136,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="sidebarLayouts">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../folder/customers.php">
+                                    <a href="../../folder/customers.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -76,7 +152,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="forms">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../folder/doctor.php">
+                                    <a href="../../folder/doctor.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -124,7 +200,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="pagos">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../view/pagos/mostrar.php">
+                                    <a href="../pagos/mostrar.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -140,7 +216,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="auditoria">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../view/audit/mostrar.php">
+                                    <a href="../audit/mostrar.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -156,7 +232,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="backup">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../view/backup/mostrar.php">
+                                    <a href="../backup/mostrar.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -175,7 +251,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../folder/appointment.php">
+                                    <a href="../../folder/appointment.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -191,7 +267,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="pagos">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../view/pagos/mostrar.php">
+                                    <a href="../pagos/mostrar.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -210,7 +286,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../folder/appointment.php">
+                                    <a href="../../folder/appointment.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -226,7 +302,7 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
                         <div class="collapse" id="sidebarLayouts">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../folder/customers.php">
+                                    <a href="../../folder/customers.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
@@ -247,3 +323,4 @@ $cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
 
     </div>
 </div>
+

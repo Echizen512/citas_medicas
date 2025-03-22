@@ -104,10 +104,10 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
 <div class="wrapper">
 		<div class="main-header">
-			<!-- Logo Header -->
+
 			<div class="logo-header" data-background-color="blue">
 				
-				<a href="admin.php" class="logo" style="color: white">Admin</a>
+				<a href="admin.php" class="logo" style="color: white"></a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
 						<i class="icon-menu"></i>
@@ -169,7 +169,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 											<div class="avatar-lg"><img src="../../assets/img/mujer.png" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4><?php echo ucfirst($_SESSION['nombre']); ?></h4>
-												<p class="text-muted">Administrador</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<p class="text-muted">Administrador</p>
 											</div>
 										</div>
 									</li>
@@ -196,7 +196,6 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									<?php echo ucfirst($_SESSION['nombre']); ?>
-									<span class="user-level">Administrador</span>
 								</span>
 							</a>
 							<div class="clearfix"></div>

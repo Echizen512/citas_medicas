@@ -3,9 +3,9 @@ require 'assets/db/config.php';
 if (isset($_POST['login'])) {
     $errMsg = '';
 
-    // Obtener datos del FORMULARIO
+
     $usuario = $_POST['usuario'];
-    $clave = $_POST['clave']; // No encriptar aquí, solo obtener la entrada del usuario
+    $clave = $_POST['clave'];
 
     if ($usuario == '') {
         $errMsg = 'Escriba su usuario';
@@ -20,16 +20,12 @@ if (isset($_POST['login'])) {
             
             $stmt->execute(array(':usuario' => $usuario));
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
             if ($data == false) {
                 $errMsg = "Usuario $usuario no encontrado.";
             } else {
-                // Comparar contraseña dependiendo del tipo de hash
                 if ($data['tipo'] == "usuarios" && md5($clave) == $data['clave']) {
-                    // Usuarios: Comparar con MD5
                     loginSuccessful($data);
                 } elseif ($data['tipo'] == "customers" && password_verify($clave, $data['clave'])) {
-                    // Customers: Comparar con password_hash()
                     loginSuccessful($data);
                 } else {
                     $errMsg = 'Contraseña incorrecta.';
@@ -54,6 +50,10 @@ function loginSuccessful($data) {
         header('Location: view/admin/admin.php');
     } else if ($_SESSION['cargo'] == 2) {
         header('Location: view/user/user.php');
+    } else if ($_SESSION['cargo'] == 3) {
+        header('Location: view/admin/admin.php');
+    } else if ($_SESSION['cargo'] == 4) {
+        header('Location: view/admin/admin.php');
     }
 
     exit;

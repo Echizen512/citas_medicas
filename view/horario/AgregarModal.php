@@ -1,4 +1,4 @@
-<!-- Agregar Nuevos Registros -->
+
 <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
 	
@@ -55,4 +55,3 @@
     </div>
 </div>
 </div>
-<!-- -->

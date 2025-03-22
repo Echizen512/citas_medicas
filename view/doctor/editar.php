@@ -98,8 +98,8 @@
 															
 													</div>
 													<div class="modal-footer no-bd">
-														<button type="submit" name="editar" class="btn btn-primary">Editar</button>
-														<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+														<button type="submit" name="editar" class="btn btn-primary" style="border-radius: 50%">Editar</button>
+														<button type="button" class="btn btn-danger" data-dismiss="modal" style="border-radius: 50%">Cerrar</button>
 													</div>
 												</form>
 											</div>

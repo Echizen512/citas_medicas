@@ -24,7 +24,7 @@
 						<div class="col-md-6">
 							<div class="form-group form-group-default">
 								<label>Apellidos</label>
-								<input name="apedoc" required type="text" class="form-control" placeholder="Ingrese apellidos" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}"  title="La clave debe tener al menos 6 caracteres, una letra mayúscula, una letra minúscula y un número.">>
+								<input name="apedoc" required type="text" class="form-control" placeholder="Ingrese apellidos" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}"  title="La clave debe tener al menos 6 caracteres, una letra mayúscula, una letra minúscula y un número.">
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -88,8 +88,10 @@
             </div>
         </div>
 		<div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-                <button type="submit" name="agregar" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar Registro</button>
+                
+                <button type="submit" name="agregar" class="btn btn-primary" style="border-radius: 50%"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar Registro</button>
+				<button type="button" class="btn btn-danger" style="border-radius: 50%" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+
 			</form>
                 </div>
 			</div>

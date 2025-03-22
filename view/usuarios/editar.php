@@ -33,6 +33,8 @@
 								<label>Cargo</label>
 								<select class="form-control" name="cargo">
 									<option value="1">Administrador</option>
+									<option value="3">Secretaria</option>
+									<option value="4">Medico</option>
 								</select>
 							</div>
 						</div>

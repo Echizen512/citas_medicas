@@ -72,7 +72,7 @@ if ($response !== false) {
 
 <div class="wrapper">
 		<div class="main-header">
-			<!-- Logo Header -->
+
 			<div class="logo-header" data-background-color="blue">
 
 				<a href="../user/user.php" class="logo" style="color: White;">User

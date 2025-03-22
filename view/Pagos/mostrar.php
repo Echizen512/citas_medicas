@@ -1,23 +1,26 @@
 <?php
+
 session_start();
-if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
-    header('location: ../../login.php');
+
+if (!isset($_SESSION['cargo']) || !in_array($_SESSION['cargo'], [1, 3, 4])) {
+
+    header('location: ../login.php');
     exit();
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "consultorio";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "consultorio";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-$consulta = "SELECT id_pago, codcit, codpaci, coddoc, monto, monto_bs, metodo_pago, referencia, fecha FROM pagos";
-$result = $conn->query($consulta);
+    $consulta = "SELECT id_pago, codcit, codpaci, coddoc, monto, monto_bs, metodo_pago, referencia, fecha FROM pagos";
+    $result = $conn->query($consulta);
 
 ?>
 
@@ -25,7 +28,6 @@ $result = $conn->query($consulta);
 <html lang="en">
 
 <head>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Medicos</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
@@ -51,12 +53,12 @@ $result = $conn->query($consulta);
     <link rel="stylesheet" href="../../assets/css/atlantis.min.css">
     <link rel="stylesheet" href="../../assets/css/demo.css">
 </head>
+
 <div class="wrapper">
     <div class="main-header">
-        <!-- Logo Header -->
         <div class="logo-header" data-background-color="blue">
 
-            <a href="admin.php" class="logo" style="color: white">Admin</a>
+            <a href="admin.php" class="logo" style="color: white"></a>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
                 data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
@@ -95,14 +97,6 @@ $result = $conn->query($consulta);
                     </li>
                     <li class="nav-item dropdown hidden-caret">
                         <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
-                            <li>
-
-                            </li>
-                            <li>
-
-
-                            </li>
-
                         </ul>
                     </li>
 
@@ -121,8 +115,7 @@ $result = $conn->query($consulta);
                                                 class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4><?php echo ucfirst($_SESSION['nombre']); ?></h4>
-                                            <p class="text-muted">Administrador</p><a href="profile.html"
-                                                class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                            <p class="text-muted"></p>
                                         </div>
                                     </div>
                                 </li>
@@ -137,27 +130,43 @@ $result = $conn->query($consulta);
             </div>
         </nav>
     </div>
+    <?php
+session_start();
 
-    <div class="sidebar sidebar-style-2">
-        <div class="sidebar-wrapper scrollbar scrollbar-inner">
-            <div class="sidebar-content">
-                <div class="user">
-                    <div class="avatar-sm float-left mr-2">
-                        <img src="../../assets/img/mujer.png" alt="..." class="avatar-img rounded-circle">
-                    </div>
-                    <div class="info">
-                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                            <span>
-                                <?php echo ucfirst($_SESSION['nombre']); ?>
-                                <span class="user-level">Administrador</span>
-                            </span>
-                        </a>
-                        <div class="clearfix"></div>
-                        <div class="collapse in" id="collapseExample">
-                        </div>
-                    </div>
+$cargo = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : null;
+?>
+
+<div class="sidebar sidebar-style-2">           
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="avatar-sm float-left mr-2">
+                    <img src="../../assets/img/mujer.png" alt="..." class="avatar-img rounded-circle">
                 </div>
-                <ul class="nav nav-primary">
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                        <span>
+                            <?php echo ucfirst($_SESSION['nombre']); ?>
+                            <span class="user-level">
+                                <?php
+
+                                switch ($cargo) {
+                                    case 1: echo "Administrador"; break;
+                                    case 3: echo "Secretaria"; break;
+                                    case 4: echo "Médico"; break;
+                                    default: echo "Invitado"; break;
+                                }
+                                ?>
+                            </span>
+                        </span>
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+                <?php
+                if ($cargo == 1) {
+                    ?>
 
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#base">
@@ -167,16 +176,15 @@ $result = $conn->query($consulta);
                         </a>
                         <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
-
                                 <li>
                                     <a href="../../folder/appointment.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#sidebarLayouts">
                             <i class="fas fa-male"></i>
@@ -190,10 +198,10 @@ $result = $conn->query($consulta);
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#forms">
                             <i class="fas fa-user-md"></i>
@@ -210,6 +218,7 @@ $result = $conn->query($consulta);
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#tables">
                             <i class="fas fa-table"></i>
@@ -223,10 +232,10 @@ $result = $conn->query($consulta);
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#user">
                             <i class="fas fa-user"></i>
@@ -240,7 +249,6 @@ $result = $conn->query($consulta);
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </div>
                     </li>
@@ -258,7 +266,6 @@ $result = $conn->query($consulta);
                                         <span class="sub-item">Mostrar</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </div>
                     </li>
@@ -280,8 +287,6 @@ $result = $conn->query($consulta);
                         </div>
                     </li>
 
-
-
                     <li class="nav-item">
                         <a data-toggle="collapse" href="#backup">
                             <i class="fas fa-download"></i>
@@ -294,18 +299,95 @@ $result = $conn->query($consulta);
                                     <a href="../backup/mostrar.php">
                                         <span class="sub-item">Mostrar</span>
                                     </a>
-                                </li>
+                    </li>
 
+                    <?php
+                } elseif ($cargo == 3) {
+                    ?>
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Citas</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="../../folder/appointment.php">
+                                        <span class="sub-item">Mostrar</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
 
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#pagos">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <p>Pagos</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="pagos">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="../pagos/mostrar.php">
+                                        <span class="sub-item">Mostrar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
+                    <?php
+                } elseif ($cargo == 4) {
+                    ?>
+                     <li class="nav-item">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Citas</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="../../folder/appointment.php">
+                                        <span class="sub-item">Mostrar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
-                </ul>
-            </div>
+                    <li class="nav-item">
+                        <a data-toggle="collapse" href="#sidebarLayouts">
+                            <i class="fas fa-male"></i>
+                            <p>Pacientes</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="sidebarLayouts">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="../../folder/customers.php">
+                                        <span class="sub-item">Mostrar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <?php
+                } else {
+                    ?>
+                    <li class="nav-item">
+                        <p>No tienes permisos para ver el contenido.</p>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
         </div>
     </div>
+</div>
+</div>
 
     <div class="main-panel">
         <div class="content">
@@ -333,9 +415,9 @@ $result = $conn->query($consulta);
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
-                                    <h4 class="card-title">Mostrar Pagos</h4>
+                                    <h4 class="card-title">Mostrar</h4>
                                 </div>
-                                <div class="card-tools">
+                                <div class="card-tools mt-4 mb-3 ml-2">
                                     <a href="../../view/pagos/reporte.php"
                                         class="btn btn-info btn-border btn-round btn-sm mr-2">
                                         <span class="btn-label">
@@ -350,13 +432,13 @@ $result = $conn->query($consulta);
                                     <table id="add-row" class="display table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Código Cita</th>
-                                                <th>Código Paciente</th>
-                                                <th>($)</th>
-                                                <th>(Bs)</th>
-                                                <th>Método de Pago</th>
-                                                <th>Referencia</th>
-                                                <th>Fecha</th>
+                                                <th class="text-center">Código Cita</th>
+                                                <th class="text-center">Código Paciente</th>
+                                                <th class="text-center">($)</th>
+                                                <th class="text-center">(Bs)</th>
+                                                <th class="text-center">Método de Pago</th>
+                                                <th class="text-center">Referencia</th>
+                                                <th class="text-center">Fecha</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -383,13 +465,13 @@ $result = $conn->query($consulta);
                                     }
                                     ?>
                                             <tr>
-                                                <td><?php echo $row['codcit']; ?></td>
-                                                <td><?php echo $row['codpaci']; ?></td>
-                                                <td><?php echo $row['monto']; ?></td>
-                                                <td><?php echo $row['monto_bs']; ?></td>
-                                                <td><?php echo $metodo_pago; ?></td>
-                                                <td><?php echo $row['referencia']; ?></td>
-                                                <td><?php echo $row['fecha']; ?></td>
+                                                <td class="text-center"><?php echo $row['codcit']; ?></td>
+                                                <td class="text-center"><?php echo $row['codpaci']; ?></td>
+                                                <td class="text-center"><?php echo $row['monto']; ?></td>
+                                                <td class="text-center"><?php echo $row['monto_bs']; ?></td>
+                                                <td class="text-center"><?php echo $metodo_pago; ?></td>
+                                                <td class="text-center"><?php echo $row['referencia']; ?></td>
+                                                <td class="text-center"><?php echo $row['fecha']; ?></td>
                                             </tr>
                                             <?php
                                 }

@@ -1,7 +1,10 @@
 <?php
-	session_start();
-	if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1){
+session_start();
+
+if (!isset($_SESSION['cargo']) || !in_array($_SESSION['cargo'], [1, 3, 4])) {
+
     header('location: ../login.php');
+    exit();
 }
 ?>
 
@@ -60,7 +63,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Mostrar</h4>
-                                <a href="#addRowModal" class="btn btn-primary btn-round ml-auto" data-toggle="modal">Nuevo</a>
+                                <a href="#addRowModal" class="btn btn-primary btn-round ml-auto" data-toggle="modal">¡Nuevas Citas!</a>
                                 <?php include('AgregarModal.php'); ?>
                             </div>
                             <div class="card-body">

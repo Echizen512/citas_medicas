@@ -24,29 +24,18 @@ class PDF extends FPDF {
     function Header() {
         
         $this->Image('../../assets/img/logo.jpg', 20, 10, 45);
-        
-        
         $this->SetFont('Arial', 'B', 14);
         $this->SetTextColor(33, 37, 41);
         $this->Ln(10);
-        
         $this->Cell(0, 5, utf8_decode('República Bolivariana de Venezuela'), 0, 1, 'C');
         $this->Ln(5); 
-        
-        
         $this->Cell(0, 5, utf8_decode ('Consultorio Pediátrico Dra. Yenitze Perdomo'), 0, 1, 'C');
         $this->Ln(5); 
-        
-        
         $this->Cell(0, 5, 'La Victoria - Estado Aragua', 0, 1, 'C');
         $this->Ln(15); 
-        
-        
         $this->SetFont('Arial', 'B', 16);
         $this->Cell(0, 10, 'Reporte de Doctores', 0, 1, 'C');
         $this->Ln(15); 
-        
-        
         $this->SetDrawColor(0, 123, 255);
         $this->SetLineWidth(1);
         $this->Line(10, 80, 280, 80); 
@@ -66,7 +55,7 @@ class PDF extends FPDF {
         $this->SetLineWidth(.3);
         $this->SetFont('Arial', 'B', 12);
 
-        $w = array(10, 25, 50, 50, 45, 25, 25, 40);  // Ajuste de anchos de columna según el contenido
+        $w = array(10, 25, 50, 50, 45, 25, 25, 40);  
 
         for ($i = 0; $i < count($header); $i++) {
             $this->Cell($w[$i], 10, $header[$i], 1, 0, 'C', true);

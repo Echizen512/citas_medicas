@@ -41,7 +41,7 @@
 
 	<div class="wrapper">
 		<div class="main-header">
-			<!-- Logo Header -->
+
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="../view/admin/admin.php" class="logo">
@@ -184,7 +184,7 @@
 											<div class="avatar-lg"><img src="../assets/img/mujer.png" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4><?php echo ucfirst($_SESSION['nombre']); ?></h4>
-												<p class="text-muted">Administrador</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<p class="text-muted">Administrador</p>
 											</div>
 										</div>
 									</li>
@@ -216,7 +216,6 @@
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									<?php echo ucfirst($_SESSION['nombre']); ?>
-									<span class="user-level">Administrador</span>
 									<span class="caret"></span>
 								</span>
 							</a>

@@ -71,10 +71,10 @@
 										<table id="add-row" class="display table table-striped table-hover" >
 											<thead>
 												<tr>
-													<th>Nombre</th>
-													<th>Usuario</th>
-													<th>Correo</th>
-													<th>Cargo</th>
+													<th class="text-center">Nombre</th>
+													<th class="text-center">Usuario</th>
+													<th class="text-center">Correo</th>
+													<th class="text-center">Cargo</th>
 													<th style="width: 10%">Acción</th>
 												</tr>
 											</thead>
@@ -88,10 +88,10 @@
 							foreach ($db->query($sql) as $row) {
 								?>
 								<tr>
-									<td><?php echo $row['nombre']; ?></td>
-									<td><?php echo $row['usuario']; ?></td>
-									<td><?php echo $row['email']; ?></td>
-									<td>
+									<td class="text-center"><?php echo $row['nombre']; ?></td>
+									<td class="text-center"><?php echo $row['usuario']; ?></td>
+									<td class="text-center"><?php echo $row['email']; ?></td>
+									<td class="text-center">
                 <?php    
 
                 if($row['cargo']==1)  { ?> 
@@ -101,11 +101,11 @@
                 </form>
                 <?php  }   else {?> 
                     <form  method="get" action="javascript:inactivo('<?php echo $row['id']; ?>')"> 
-                        <button type="submit" class="btn btn-danger btn-xs">Cliente</button>
+                        <span class="text-primary pl-3"><strong>Empleado</strong></span>
                     </form>
                 <?php  } ?>                         
             </td>
-				<td>
+				<td class="text-center">
 				<div class="form-button-action">
 					<button href="#editRowModal=<?php echo $row['id'];?>" class="btn btn-link btn-primary btn-lg" data-toggle="modal"  title="" data-original-title="Edit Task" data-target="#editRowModal<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></button>
 					<button href="#PassRowModal=<?php echo $row['id'];?>" class="btn btn-link btn-primary btn-lg" data-toggle="modal"  title="" data-original-title="Pass Task" data-target="#PassRowModal<?php echo $row['id']; ?>"><i class="fa fa-key"></i></button>
@@ -247,7 +247,7 @@
             }
         });
 
-        var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+        var action = '<td class="text-center"> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
         $('#addRowButton').click(function() {
             $('#add-row').dataTable().fnAddData([
