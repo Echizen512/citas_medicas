@@ -1,8 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1){
+
+if (!isset($_SESSION['cargo']) || !in_array($_SESSION['cargo'], [1, 3, 4])) {
+
     header('location: ../login.php');
-    exit(); 
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_patient'])) {

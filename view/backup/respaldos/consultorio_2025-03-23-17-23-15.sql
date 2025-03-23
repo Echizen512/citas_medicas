@@ -35,7 +35,7 @@ CREATE TABLE `auditoria` (
   `datos` text DEFAULT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_auditoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `auditoria` VALUES ('1','appointment','UPDATE','9','9,2025-03-08,10:56:00,1,2,4,1,2025-03-07 23:21:24','2025-03-07 23:21:24');
 INSERT INTO `auditoria` VALUES ('2','appointment','INSERT','10','10,2025-03-09,07:14:00,1,2,4,0,2025-03-08 00:15:18','2025-03-08 00:15:18');
@@ -45,6 +45,12 @@ INSERT INTO `auditoria` VALUES ('5','appointment','UPDATE','10','10,2025-03-09,0
 INSERT INTO `auditoria` VALUES ('6','appointment','INSERT','12','12,2025-03-10,08:34:00,1,2,4,0,2025-03-08 00:35:09','2025-03-08 00:35:09');
 INSERT INTO `auditoria` VALUES ('7','usuarios','INSERT','3','3,Prueba,Prueba,jmrm19722@gmail.com,f6015242d72929144748c476840db4b4,3','2025-03-21 22:33:02');
 INSERT INTO `auditoria` VALUES ('8','usuarios','INSERT','4','4,Pruebas,Pruebas,gramolca@gmail.com,f6015242d72929144748c476840db4b4,4','2025-03-22 00:19:17');
+INSERT INTO `auditoria` VALUES ('9','usuarios','UPDATE','3','3,Secretaria,Secretaria,secretaria@gmail.com,f6015242d72929144748c476840db4b4,1','2025-03-22 00:40:10');
+INSERT INTO `auditoria` VALUES ('10','usuarios','UPDATE','4','4,Medico,Medico,medico@gmail.com,f6015242d72929144748c476840db4b4,1','2025-03-22 00:40:58');
+INSERT INTO `auditoria` VALUES ('11','usuarios','UPDATE','4','4,Medico,Medico,medico@gmail.com,f6015242d72929144748c476840db4b4,4','2025-03-22 00:41:32');
+INSERT INTO `auditoria` VALUES ('12','usuarios','UPDATE','3','3,Secretaria,Secretaria,secretaria@gmail.com,f6015242d72929144748c476840db4b4,3','2025-03-22 00:41:37');
+INSERT INTO `auditoria` VALUES ('13','usuarios','UPDATE','4','4,Zaidelys Rondón,Medico,medico@gmail.com,f6015242d72929144748c476840db4b4,4','2025-03-23 09:37:05');
+INSERT INTO `auditoria` VALUES ('14','usuarios','UPDATE','3','3,Lilian Quintero,Secretaria,secretaria@gmail.com,f6015242d72929144748c476840db4b4,3','2025-03-23 09:39:34');
 
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
@@ -192,6 +198,6 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `usuarios` VALUES ('1','Yenitze Perdomo','Admin','yenitze@hotmail.com','e3afed0047b08059d0fada10f400c1e5','1');
-INSERT INTO `usuarios` VALUES ('3','Prueba','Prueba','jmrm19722@gmail.com','f6015242d72929144748c476840db4b4','3');
-INSERT INTO `usuarios` VALUES ('4','Pruebas','Pruebas','gramolca@gmail.com','f6015242d72929144748c476840db4b4','4');
+INSERT INTO `usuarios` VALUES ('3','Lilian Quintero','Secretaria','secretaria@gmail.com','f6015242d72929144748c476840db4b4','3');
+INSERT INTO `usuarios` VALUES ('4','Zaidelys Rondón','Medico','medico@gmail.com','f6015242d72929144748c476840db4b4','4');
 

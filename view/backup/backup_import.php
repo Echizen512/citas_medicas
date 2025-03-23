@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die(json_encode(["status" => "error", "message" => "Conexión fallida: " . $conn->connect_error]));
 }
 
-$backup_dir = getenv("HOMEDRIVE") . getenv("HOMEPATH") . "\\Desktop\\respaldos\\";
+$backup_dir = __DIR__ . "/respaldos/"; // `__DIR__` obtiene el directorio actual del script
 if (!file_exists($backup_dir)) {
     mkdir($backup_dir, 0777, true);
 }
